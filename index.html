@@ -7,9 +7,7 @@
     <style>
 
 @font-face {
-    font-family: 'Harry P';
-    src: url('HarryP.woff2') format('woff2'),
-        url('HarryP.woff') format('woff');
+    
     font-weight: normal;
     font-style: normal;
 }
@@ -22,8 +20,9 @@ font-family: 'Harry P';
   #popup {
   
   top: 20vh;
-  width: 50vw;
-  height: 70vh;
+  width: 60vh;
+  height: 60vh;
+  left: 62vh;
   position: fixed;
   background-color: rgba(140, 118, 168, 0.36);
   overflow: scroll;
@@ -36,8 +35,12 @@ font-family: 'Harry P';
   width: 30vw;
   margin: 4rem auto;
 }
-
-
+.expelled_icon {
+  background-color: rgb(218, 60, 60);
+}
+.prefect {
+  background-color: rgb(60, 196, 60);
+}
 
 .singleret {
   display: grid;
@@ -96,6 +99,7 @@ font-family: 'Harry P';
       }
       body {
         background-image: url(img/hogwarts.jpg);
+        background-attachment: fixed;
       }
 
         .students {
@@ -120,9 +124,9 @@ font-family: 'Harry P';
             <div class="navigationwrapper">
               <div class="sortingnav">
                 <h2>Sort by</h2>
-                <button id="firstname">First name</button>
-                <button id="lastname">Last name</button>
-                <button id="house">House</button>
+                <button class="sort" data-sort="first_name">First name</button>
+                <button class="sort" data-sort="last_name">Last name</button>
+                <button class="sort" data-sort="house">House</button>
               </div>
               <div class="filternav">
                 <h2>Filter by</h2>
@@ -132,7 +136,12 @@ font-family: 'Harry P';
                 <button class="filter" data-hus="Hufflepuff">Hufflepuff</button>
                 <button class="filter valgt" data-hus="alle">All</button>
               </div>
+              <div>
+                <h2>Expelled students:</h2>
+                <button class="expelled">Expelled</button>
+              </div>
             </div>
+            
           </header>
     <section id="all">
       <div class="students"></div>
@@ -144,7 +153,8 @@ font-family: 'Harry P';
                 <section class="student">
                    <h3 class="names"></h3>
                    <p class="house"></p>
-
+                   <button class="expelled_icon" data-action="remove">Expell</button>
+                   <button class="prefect" data-action="prefect">Prefect</button>
                 </section>
             </template>
           </section>

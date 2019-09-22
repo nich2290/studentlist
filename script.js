@@ -10,7 +10,7 @@ let Filter;
 let expellArray = [];
 let bloodStatus = [];
 
-// Our prototype Student
+// Our prototype Student object properties.
 const Student = {
   firstName: "-firstName-",
   middleName: "",
@@ -30,6 +30,7 @@ const Nicklas = {
   house: "-house-",
   uuid: "1337"
 };
+// This function  starts the "Program" with EventListeners and by calling key functions.
 function start() {
   console.log("ready");
   document.querySelector("#hacking").classList.add("hide");
@@ -152,12 +153,12 @@ function uuidv4() {
     return v.toString(16);
   });
 }
-
+// This function rebuilds the list after being restructured in ObjectsPreparing.
 function rebuildList() {
   filterListBy("all");
   displayList(currentList);
 }
-
+// This function will highlight the selected Sort button.
 function setSort() {
   sortButton = this.getAttribute("data-sort");
   document.querySelectorAll(".sort").forEach(elm => {
@@ -189,6 +190,7 @@ function filterListBy(filterBy) {
     return true; // right now, just don't filter anything
   });
 }
+// This function will highlight the selected Filter button, and forward it to the actual filter function.
 function setFilter() {
   Filter = this.dataset.hus;
   document.querySelectorAll(".filter").forEach(elm => {
@@ -199,7 +201,7 @@ function setFilter() {
   currentList = filtering(Filter);
   displayList(currentList);
 }
-
+// This function filters the content based on which house button is clicked on, and only shows students from the selected house.
 function filtering(house) {
   let filterlist = allStudents.filter(filterHouse);
   function filterHouse(student) {
@@ -300,7 +302,7 @@ async function loadJsonBlood() {
   findHalfBlood(halfBloodStatus);
   findPureBlood(pureBloodStatus);
 }
-// Find students with pureblood by pairing with lastname
+//This function will find students with pureblood by pairing with lastname
 function findPureBlood(pureBloodStatus) {
   let pure;
 
@@ -314,7 +316,7 @@ function findPureBlood(pureBloodStatus) {
     });
   });
 }
-// Find students with halfblood by pairing with lastname
+// This function will find students with halfblood by pairing with lastname
 function findHalfBlood(halfBloodStatus) {
   let half;
 
@@ -393,7 +395,7 @@ function getPrefectsInHouse(house) {
 function showAlert(house, prefectsInHouse) {
   // Display alert popup if trying to select more than 2 prefects from a given house.  Give the opportunity to revoke a student, to go back to the front page.
   document.querySelector("#alert").style.display = "block";
-  document.querySelector("#alert .p_top").textContent = "There are currently already 2 prefects in " + house + ", please revoke prefect status for one of the following before adding new:";
+  document.querySelector("#alert .p_top").textContent = "There are already 2 prefects from " + house + ", you have to revoke atleast one, to add a new from that house.:";
 
   document.querySelector("#stud_0").textContent = prefectsInHouse[0].firstName;
   document.querySelector("#stud_0").addEventListener("click", function() {
@@ -423,10 +425,10 @@ function showAlert(house, prefectsInHouse) {
     }, 3000);
   });
 }
-
+// Adds prefect and applies styling.
 function addPrefect(clickedStudent, element) {
   clickedStudent.prefect = true;
-  // prefectsInHouse.push(clickedStudent);
+
   element.style.color = "red";
 }
 

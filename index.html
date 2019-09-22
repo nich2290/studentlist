@@ -14,25 +14,75 @@
 h3, h2, p{
 font-family: 'Harry P';
 }
-      body img {
-        width: 100%;
-      }
+      
   #popup {
   
   top: 20vh;
-  width: 60vh;
-  height: 60vh;
+  min-width: 60vh;
+  
   left: 62vh;
   position: fixed;
   background-color: rgba(140, 118, 168, 0.36);
   overflow: scroll;
   display: none;
 }
+#alert {
+  top: 10vh;
+  left: 25vh;
+  width: 70%;
+  height: 70%;
+  
+  
+  position: fixed;
+  background-color: rgba(47, 46, 48, 0.699);
+  overflow: scroll;
+  display: none;
+}
 
+ #stud_0, #stud_1 {
+  border: solid black 2px;
+  height: 40px;
+  min-width: 20vh;
+  margin: 2px 0 2px 0;
+  background-color: rgb(60, 196, 60);
+  
+}
+#stud_0:hover, #stud_1:hover {
+  border: solid black 2px;
+  height: 40px;
+  min-width: 20vh;
+  margin: 2px 0 2px 0;
+  background-color: rgb(218, 60, 60);
+  
+}
+.p_top {
+  margin: 1rem;
+  margin-top: 2rem;
+}
+img {
+  width: 40%;
+}
+.names:hover {
+  color: red;
+  cursor: pointer;
+}
+#popup img {
+  text-align: center;
+  margin-top: 2rem;
+}
+#popup article {
+text-align: center;
+}
 #indhold {
   min-height: 50vh;
   background-color: white;
   width: 30vw;
+  margin: 4rem auto;
+}
+#indhold2 {
+  min-height: 50vh;
+  background-color: grey;
+  width: 40vw;
   margin: 4rem auto;
 }
 .expelled_icon {
@@ -41,38 +91,57 @@ font-family: 'Harry P';
 .prefect {
   background-color: rgb(60, 196, 60);
 }
+.prefect_wrap {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  
+}
+.squad {
+  background-color: rgb(245, 245, 100);
+}
 
+.studentcount {
+  text-align: center;
+  grid-column: 2;
+}
 .singleret {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-#luk {
-  position: fixed;
-  right: 2rem;
-  top: 0.5rem;
-}
+
 
 #luk button {
   font-size: 1rem;
-  padding: 1rem 1rem;
-  color: #8c76a8;
+  
+  color: white;
+  background-color: none;
   cursor: pointer;
+  border: 0;
+
 }
+
 
 .singleret {
   padding: 1vw;
 }
       .navigationwrapper {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         
+      }
+      .sortingnav {
+        grid-column: 2;
+      }
+      .filternav {
+        grid-column: 3 / span 4;
       }
      button {
        background-color: transparent;
        color: black;
-       height: 5vh;
-       width: 10vh;
+       height: 3em;
+       width: 7em;
        border: 1px solid black;
      }
      button:hover {
@@ -86,41 +155,84 @@ font-family: 'Harry P';
      }
       .student {
         padding: 5px;
-        border: 1px solid black;
+        border-bottom: 1px solid black;
+        
         margin-left: 5vh;
         margin-right: 5vh;
         margin-top: 2vh;
       }
       .student:hover {
-        border: 1px solid white;
+        background-color: rgba(255, 255, 255, 0.459);
         cursor: pointer;
-        background-color: black;
-        color: white;
+        
+        
       }
       body {
         background-image: url(img/hogwarts.jpg);
         background-attachment: fixed;
+       
       }
-
+      .studentimage img {
+        width: 100%;
+      }
         .students {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
           margin: 5vh 20vh 5vh 20vh;
 
         }
-      
+      #hacking {
+        position: fixed;
+        top: 25vh;
+        left: 40vh;
+        color: red;
+        font-size: 3rem;
+      }
+      .hide {
+        display: none;
+      }
+      .deploy {
+        display: block;
+      }
+      .blur {
+        filter: blur(15px);
+        transition: ease-in-out;
+      }
+      .shake {
+       
+        animation: .3s shake infinite alternate;
+      }
+      @keyframes shake {
+  0% { transform: skewX(-15deg); }
+  5% { transform: skewX(15deg); }
+  10% { transform: skewX(-15deg); }
+  15% { transform: skewX(15deg); }
+  20% { transform: skewX(0deg); }
+  100% { transform: skewX(0deg); }  
+}
     </style>
   </head>
 
   <body>
-
+<h1 id="hacking">YOU CAN'T EXPELL THE HACKER</h1>
       <div id="popup">
           <div id="luk">
             <button>✕</button>
           </div>
           <div id="indhold"></div>
         </div>
+        <div id="alert">
+          
+          <div id="indhold2">
+            <p class="p_top"></p>
+            <div class="prefect_wrap">
+            <button id="stud_0"></button>
+            <button id="stud_1"></button>
+          </div>
+          </div>
+        </div>
         <header>
+          
             <div class="navigationwrapper">
               <div class="sortingnav">
                 <h2>Sort by</h2>
@@ -136,12 +248,10 @@ font-family: 'Harry P';
                 <button class="filter" data-hus="Hufflepuff">Hufflepuff</button>
                 <button class="filter valgt" data-hus="alle">All</button>
               </div>
-              <div>
-                <h2>Expelled students:</h2>
-                <button class="expelled">Expelled</button>
-              </div>
+             
+              
             </div>
-            
+            <h2 class="studentcount"></h2>
           </header>
     <section id="all">
       <div class="students"></div>
@@ -151,10 +261,19 @@ font-family: 'Harry P';
             <template>
 
                 <section class="student">
+                    
+                  <div class="modelclick">
+                      <img class="studentimage">
                    <h3 class="names"></h3>
                    <p class="house"></p>
+                  </div>
+                  
                    <button class="expelled_icon" data-action="remove">Expell</button>
-                   <button class="prefect" data-action="prefect">Prefect</button>
+                   <button class="prefect" data-action="add_prefect">Prefect add</button> 
+                   
+                   
+                   
+                  
                 </section>
             </template>
           </section>
